@@ -1,0 +1,16 @@
+{
+  "name": "HLC Laser & Surgery Clinic",
+  "short_name": "HLC",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f5fafb",
+  "theme_color": "#0e5a70",
+  "icons": [
+    {
+      "src": "assets/img/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
