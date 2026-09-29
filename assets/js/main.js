@@ -9,19 +9,19 @@ const CONFIG = {
 };
 
 const SERVICES = [
-  { slug: "piles", name: "Piles (Hemorrhoids)", icon: "fa-notes-medical", href: "piles.html" },
-  { slug: "fissure", name: "Anal Fissure", icon: "fa-bandage" },
-  { slug: "fistula", name: "Fistula-in-Ano", icon: "fa-syringe" },
-  { slug: "hernia", name: "Hernia", icon: "fa-shield-heart" },
-  { slug: "varicose-veins", name: "Varicose Veins", icon: "fa-heart-pulse" },
-  { slug: "pilonidal-sinus", name: "Pilonidal Sinus", icon: "fa-kit-medical" },
-  { slug: "lipoma", name: "Lipoma", icon: "fa-circle-nodes" },
-  { slug: "diabetic-foot", name: "Diabetic Foot", icon: "fa-shoe-prints" },
-  { slug: "gallbladder-stones", name: "Gallbladder Stones", icon: "fa-gem" },
-  { slug: "liposuction", name: "Liposuction", icon: "fa-weight-scale" },
-  { slug: "appendicitis", name: "Appendicitis", icon: "fa-truck-medical" },
-  { slug: "hydrocele", name: "Hydrocele", icon: "fa-droplet" },
-  { slug: "circumcision", name: "Circumcision", icon: "fa-user-doctor" }
+  { slug: "piles", name: "Piles (Hemorrhoids)", icon: "fa-notes-medical", href: "piles-treatment-in-bangalore.html" },
+  { slug: "fissure", name: "Anal Fissure", icon: "fa-bandage", href: "fissure-treatment-in-bangalore.html" },
+  { slug: "fistula", name: "Fistula-in-Ano", icon: "fa-syringe", href: "fistula-treatment-in-bangalore.html" },
+  { slug: "pilonidal-sinus", name: "Pilonidal Sinus", icon: "fa-kit-medical", href: "pilonidal-sinus-treatment-in-bangalore.html" },
+  { slug: "varicose-veins", name: "Varicose Veins", icon: "fa-heart-pulse", href: "varicose-veins-treatment-in-bangalore.html" },
+  { slug: "diabetic-foot", name: "Diabetic Foot", icon: "fa-shoe-prints", href: "diabetic-foot-treatment-in-bangalore.html" },
+  { slug: "hernia", name: "Hernia", icon: "fa-shield-heart", href: "hernia-surgery-in-bangalore.html" },
+  { slug: "gallbladder-stones", name: "Gallbladder Stones", icon: "fa-gem", href: "gallbladder-stone-treatment-in-bangalore.html" },
+  { slug: "liposuction", name: "Liposuction", icon: "fa-weight-scale", href: "liposuction-in-bangalore.html" },
+  { slug: "appendicitis", name: "Appendicitis", icon: "fa-truck-medical", href: "appendicitis-surgery-in-bangalore.html" },
+  { slug: "hydrocele", name: "Hydrocele", icon: "fa-droplet", href: "hydrocele-surgery-in-bangalore.html" },
+  { slug: "lipoma", name: "Lipoma", icon: "fa-circle-nodes", href: "lipoma-removal-in-bangalore.html" },
+  { slug: "circumcision", name: "Circumcision", icon: "fa-user-doctor", href: "circumcision-surgery-in-bangalore.html" }
 ];
 
 const $ = (s, c = document) => c.querySelector(s);
@@ -88,7 +88,7 @@ toTop?.addEventListener("click", () => scrollTo({ top: 0, behavior: "smooth" }))
 /* ---------- Active nav / tab ---------- */
 const page = document.body.dataset.page;
 $$(`[data-nav="${page}"]`).forEach(a => a.classList.add("active"));
-if (page === "piles") $$(`.tabbar [data-nav="services"]`).forEach(a => a.classList.add("active"));
+if (document.body.dataset.group === "services") $$('[data-nav="services"]').forEach(a => a.classList.add("active"));
 
 /* ---------- Reveal on scroll ---------- */
 $$("[data-stagger]").forEach(parent => {
@@ -251,6 +251,7 @@ if (filterBar) {
       c.classList.toggle("hide", !ok);
       if (ok) { shown++; c.classList.remove("in"); requestAnimationFrame(() => c.classList.add("in")); }
     });
+    $$(".svc-group").forEach(g => (g.hidden = !$(".svc-card[data-cat]:not(.hide)", g)));
     $("#noResults")?.toggleAttribute("hidden", shown > 0);
   };
   filterBar.addEventListener("click", e => {
@@ -330,10 +331,19 @@ if (lb) {
   lb.addEventListener("click", e => { if (e.target !== $("img", lb)) lb.classList.remove("show"); });
 }
 
-/* ---------- Booking sheet ---------- */
-const sheet = $("#bookSheet");
+/* ---------- Bottom sheets (booking form + mobile menu) ---------- */
+const sheet = $("#bookSheet"), menuSheet = $("#menuSheet");
+function closeSheets() {
+  $$(".sheet.open").forEach(s => { s.classList.remove("open"); const p = $(".sheet-panel", s); if (p) p.style.transform = ""; });
+  document.body.style.overflow = "";
+}
+function openMenu() {
+  if (!menuSheet) return;
+  closeSheets(); menuSheet.classList.add("open"); document.body.style.overflow = "hidden";
+}
 function openBooking(slug) {
   if (!sheet) return;
+  closeSheets();
   const sel = $("select", sheet);
   if (slug && sel) sel.value = slug;
   $("form", sheet).hidden = false;
@@ -342,28 +352,25 @@ function openBooking(slug) {
   document.body.style.overflow = "hidden";
   setTimeout(() => $("input", sheet)?.focus({ preventScroll: true }), 450);
 }
-function closeBooking() {
-  sheet?.classList.remove("open");
-  document.body.style.overflow = "";
-  const panel = $(".sheet-panel", sheet); if (panel) panel.style.transform = "";
-}
+const closeBooking = closeSheets;
 document.addEventListener("click", e => {
   const t = e.target.closest("[data-book]");
   if (t) { e.preventDefault(); openBooking(t.dataset.book || t.closest("[data-service]")?.dataset.service); }
-  if (e.target.closest("[data-close]")) closeBooking();
+  if (e.target.closest("[data-menu]")) openMenu();
+  if (e.target.closest("[data-close]")) closeSheets();
 });
 addEventListener("keydown", e => { if (e.key === "Escape") { closeBooking(); lb?.classList.remove("show"); } });
 // swipe-down to dismiss on mobile
-if (sheet) {
-  const panel = $(".sheet-panel", sheet), handle = $(".sheet-handle", sheet);
+$$(".sheet").forEach(sh => {
+  const panel = $(".sheet-panel", sh), handle = $(".sheet-handle", sh);
   let sy = 0, dy = 0;
   handle?.addEventListener("touchstart", e => { sy = e.touches[0].clientY; panel.style.transition = "none"; }, { passive: true });
   handle?.addEventListener("touchmove", e => { dy = Math.max(0, e.touches[0].clientY - sy); panel.style.transform = `translateY(${dy}px)`; }, { passive: true });
   handle?.addEventListener("touchend", () => {
     panel.style.transition = ""; panel.style.transform = "";
-    if (dy > 90) closeBooking(); dy = 0;
+    if (dy > 90) closeSheets(); dy = 0;
   });
-}
+});
 
 /* ---------- Lead forms → validate → WhatsApp ---------- */
 function toast(msg) {
@@ -483,15 +490,10 @@ document.addEventListener("pointerdown", e => {
   setTimeout(() => span.remove(), 700);
 });
 
-/* ---------- Piles self-check ---------- */
+/* ---------- Symptom self-check (treatment pages) ---------- */
 $$(".self-check").forEach(box => {
   const chips = $$(".sc-chip", box), meter = $(".sc-meter i", box), text = $(".sc-text", box);
-  const msgs = [
-    "Select your symptoms to see a recommendation.",
-    "Mild symptoms. Early treatment is simple, so a quick consult is worth it.",
-    "These symptoms often point to grade 1–2 piles. Laser treatment works best at this stage.",
-    "Several signs of advancing piles. We recommend seeing a specialist soon."
-  ];
+  const msgs = [0, 1, 2, 3].map(k => box.dataset["m" + k] || "");
   const update = () => {
     const score = chips.filter(c => c.classList.contains("on")).reduce((s, c) => s + +c.dataset.w, 0);
     meter.style.width = `${Math.min(100, score / 8 * 100)}%`;

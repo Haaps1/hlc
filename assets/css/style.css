@@ -1061,7 +1061,7 @@ h2[data-split] .split-line > span { transition-duration: .9s; }
 }
 
 /* ---------- Piles hero (unique) ---------- */
-.piles-hero {
+.svc-hero {
   position: relative; overflow: hidden; color: #fff; padding: 70px 0 150px;
   background:
     radial-gradient(900px 500px at 85% 20%, rgba(20,153,139,.35), transparent 60%),
@@ -1079,13 +1079,13 @@ h2[data-split] .split-line > span { transition-duration: .9s; }
 @keyframes gridDrift { to { background-position: 48px 48px; } }
 .ph-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.05fr 1fr; gap: 50px; align-items: center; }
 .ph-grid > * { min-width: 0; }
-.piles-hero .breadcrumb { color: rgba(255,255,255,.85); }
+.svc-hero .breadcrumb { color: rgba(255,255,255,.85); }
 .ph-chip {
   display: inline-flex; align-items: center; gap: 10px; margin: 6px 0 18px; padding: 8px 16px; border-radius: 99px;
   background: rgba(63,194,180,.14); border: 1px solid rgba(63,194,180,.35); color: #aef0e6; font-size: .85rem; font-weight: 500;
 }
 .live-dot { width: 8px; height: 8px; border-radius: 50%; background: #3fc2b4; box-shadow: 0 0 0 0 rgba(63,194,180,.6); animation: ring 1.6s infinite; }
-.piles-hero h1 { color: #fff; font-size: clamp(2.2rem, 4.6vw, 3.9rem); margin-bottom: 18px; }
+.svc-hero h1 { color: #fff; font-size: clamp(2.2rem, 4.6vw, 3.9rem); margin-bottom: 18px; }
 .ph-mark { position: relative; color: #3fc2b4; display: inline-block; }
 .ph-mark svg { position: absolute; left: 0; bottom: -6px; width: 100%; height: 16px; overflow: visible; }
 .ph-mark path { fill: none; stroke: #3fc2b4; stroke-width: 5; stroke-linecap: round; stroke-dasharray: 220; stroke-dashoffset: 220; animation: vfDraw 1.2s 1.1s var(--ease) forwards; }
@@ -1183,7 +1183,7 @@ h2[data-split] .split-line > span { transition-duration: .9s; }
   .logo-img { height: 42px; }
   .header.scrolled .logo-img { height: 38px; }
   .header.hide { transform: none; }
-  .piles-hero { padding: 36px 0 110px; text-align: left; }
+  .svc-hero { padding: 36px 0 110px; text-align: left; }
   .ph-points { gap: 8px; }
   .ph-points li { padding: 10px 14px 10px 10px; flex: 1 1 30%; min-width: 100px; }
   .ph-points i { width: 34px; height: 34px; }
@@ -1205,3 +1205,168 @@ h2[data-split] .split-line > span { transition-duration: .9s; }
 }
 @media (prefers-reduced-motion: reduce) {
 }
+
+/* =========================================================
+   MULTI-PAGE LAYER: grouped menu, treatment pages, footer
+   ========================================================= */
+
+/* ---------- Mega menu: 4 speciality columns ---------- */
+.nav { position: relative; }
+.nav-links > li.has-mega { position: static; }
+.mega {
+  top: calc(100% - 6px); width: min(1000px, calc(100vw - 48px));
+  grid-template-columns: repeat(4, 1fr); gap: 4px 18px; padding: 26px 26px 18px;
+}
+.mega-col { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.mega-col h6 {
+  display: flex; gap: 8px; align-items: center; margin: 0 0 8px; padding: 0 4px 10px; border-bottom: 1px solid var(--line);
+  font: 600 .74rem "Poppins", sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--primary-2);
+}
+.mega-col a { padding: 8px 10px; font-size: .88rem; gap: 10px; }
+.mega-col a i { width: 30px; height: 30px; border-radius: 9px; font-size: .8rem; flex-shrink: 0; }
+.mega-col a.active { background: var(--sky-soft); color: var(--primary); }
+.mega-foot {
+  grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+  margin-top: 12px; padding: 14px 18px; border-radius: 14px; background: var(--grad-soft); font-size: .88rem; color: var(--muted);
+}
+.mega-foot span i { color: var(--primary-2); margin-right: 6px; }
+.mega .mega-foot a { padding: 0; font-weight: 600; color: var(--primary); display: inline-flex; gap: 8px; }
+.mega .mega-foot a:hover { background: none; transform: translateX(4px); }
+.mega .mega-foot a i { width: auto; height: auto; background: none; color: inherit; }
+@media (max-width: 1440px) { .nav-phone { display: none; } }
+@media (max-width: 1180px) { .nav-links > li > a { padding: 10px 10px; font-size: .9rem; } }
+
+.app-actions button {
+  width: 42px; height: 42px; border-radius: 14px; display: grid; place-items: center;
+  background: var(--primary); color: #fff; font-size: 1.05rem;
+}
+
+/* ---------- Mobile menu sheet ---------- */
+.ms-cat { margin-bottom: 18px; }
+.ms-cat h4 {
+  display: flex; gap: 8px; align-items: center; margin: 0 0 10px;
+  font: 600 .76rem "Poppins", sans-serif; letter-spacing: .08em; text-transform: uppercase; color: var(--primary-2);
+}
+.ms-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.ms-grid a, .ms-links a {
+  display: flex; gap: 10px; align-items: center; padding: 12px; border-radius: 14px; background: var(--bg);
+  border: 1px solid var(--line); font: 500 .86rem "Poppins", sans-serif; color: var(--ink); transition: background .2s, transform .2s;
+}
+.ms-grid a:active, .ms-links a:active { transform: scale(.96); background: var(--sky-soft); }
+.ms-grid a i, .ms-links a i { color: var(--primary-2); width: 18px; text-align: center; }
+.ms-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding-top: 14px; border-top: 1px solid var(--line); }
+.ms-links a { flex-direction: column; gap: 6px; font-size: .76rem; text-align: center; }
+
+/* ---------- Headings that became h2/h3 for SEO keep their look ---------- */
+.h3 { font-size: 1.25rem; }
+.h4 { font-size: 1rem; margin: 0 0 2px; }
+.lead-card .h3 { margin: 0 0 4px; }
+.hours .h4 { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+.hours .h4 i { color: var(--mint); }
+.feature h3 { margin: 0 0 2px; font-size: 1.02rem; }
+.step h3 { font-size: 1.02rem; margin-bottom: 6px; }
+.tl-card h3 { margin: 4px 0 6px; font-size: 1.1rem; }
+.vt-step h3 { margin: 0 0 4px; font-size: 1.02rem; }
+
+/* ---------- Home ---------- */
+.hero-typed { font: 600 1.35rem "Poppins", sans-serif; color: var(--ink); margin: -6px 0 14px; }
+.hero-typed .typed { color: var(--coral); white-space: nowrap; }
+.hero-typed .typed::after {
+  content: ""; display: inline-block; width: 3px; height: .9em; background: var(--coral);
+  margin-left: 3px; vertical-align: -0.08em; animation: blink 1s steps(1) infinite;
+}
+.cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.cat-card {
+  background: #fff; border: 1px solid var(--line); border-radius: 24px; padding: 26px 20px 18px;
+  transition: box-shadow .4s var(--ease), border-color .3s; display: flex; flex-direction: column;
+}
+.cat-card:hover { box-shadow: var(--shadow-lg); border-color: transparent; }
+.cat-ic {
+  width: 56px; height: 56px; border-radius: 18px; background: var(--grad); color: #fff; flex-shrink: 0;
+  display: grid; place-items: center; font-size: 1.3rem; margin-bottom: 16px; box-shadow: 0 10px 24px rgba(11,35,82,.25);
+}
+.cat-card h3 { font-size: 1.15rem; margin-bottom: 6px; }
+.cat-card p { font-size: .88rem; }
+.cat-card ul { display: grid; gap: 2px; margin-top: auto; }
+.cat-card a {
+  display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 12px;
+  font-size: .88rem; font-weight: 500; transition: background .25s, color .25s;
+}
+.cat-card a:hover { background: var(--sky-soft); color: var(--primary); }
+.cat-card a i:first-child { color: var(--primary-2); width: 18px; text-align: center; }
+.cat-card a .go { margin-left: auto; font-size: .7rem; opacity: 0; transform: translateX(-6px); transition: all .3s var(--ease); }
+.cat-card a:hover .go { opacity: 1; transform: none; }
+.seo-block { max-width: 900px; margin: 0 auto; text-align: center; }
+.seo-block a, .detail-main p a { color: var(--primary); font-weight: 500; text-decoration: underline; text-decoration-color: rgba(20,153,139,.45); text-underline-offset: 3px; }
+
+/* ---------- Services page groups ---------- */
+.svc-group { margin-bottom: 64px; }
+.svc-group:last-of-type { margin-bottom: 0; }
+.group-head { display: flex; gap: 18px; align-items: center; margin-bottom: 24px; }
+.group-head .cat-ic { margin: 0; }
+.group-head h2 { margin: 0 0 4px; font-size: clamp(1.3rem, 2.4vw, 1.8rem); }
+.group-head p { margin: 0; max-width: 760px; }
+
+/* ---------- Treatment pages ---------- */
+.svc-hero .breadcrumb a, .svc-hero .breadcrumb span { color: rgba(255,255,255,.88); }
+.treat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 22px; }
+.treat-card {
+  background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 22px;
+  transition: transform .35s var(--ease), box-shadow .35s, border-color .3s;
+}
+.treat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: transparent; }
+.t-ic { width: 48px; height: 48px; border-radius: 14px; background: var(--grad); color: #fff; display: grid; place-items: center; margin-bottom: 14px; }
+.treat-card h3 { font-size: 1.02rem; margin-bottom: 6px; }
+.treat-card p { font-size: .9rem; margin: 0; }
+.why-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 20px; }
+.why-list .feature { padding: 16px; }
+.note-small { font-size: .8rem; margin: 14px 0 0; font-style: italic; }
+.grade-visual.sm b { font-size: 1.45rem; }
+.detail-main > section { scroll-margin-top: 110px; }
+.detail-main h2 + p { margin-top: 4px; }
+.areas-box { background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 26px; margin-top: 30px; }
+.areas-box h3 { display: flex; gap: 10px; align-items: center; font-size: 1.15rem; }
+.areas-box h3 i { color: var(--primary-2); }
+.areas { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.areas span { padding: 7px 14px; border-radius: 99px; background: var(--sky-soft); color: var(--primary); font-size: .84rem; font-weight: 500; }
+.toc a { padding: 8px 10px; font-size: .88rem; }
+
+/* sidebar: info cards scroll away, the booking form sticks */
+.sticky-side { position: static; align-self: stretch; align-content: start; }
+.side-sticky { position: sticky; top: 96px; display: grid; gap: 20px; }
+
+/* ---------- Contact ---------- */
+.reach-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+/* ---------- Footer: 5 columns + areas ---------- */
+.footer-grid { grid-template-columns: 1.5fr 1fr 1fr .8fr 1.3fr; gap: 32px; }
+.footer-grid ul + h4 { margin-top: 26px; }
+.f-areas { margin-top: 40px; padding: 18px 20px; border-radius: 16px; background: rgba(255,255,255,.05); font-size: .85rem; line-height: 1.9; position: relative; }
+.f-areas b { color: #fff; margin-right: 6px; font-weight: 500; }
+.f-areas i { color: var(--mint); margin-right: 4px; }
+
+.noscript-nav { display: flex; flex-wrap: wrap; gap: 10px 16px; padding: 14px 24px; background: #fff; font-size: .85rem; }
+.noscript-nav a { color: var(--primary); }
+
+@media (max-width: 1100px) {
+  .cat-grid, .reach-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .f-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 900px) {
+  .treat-grid, .why-list { grid-template-columns: 1fr; }
+  .group-head .cat-ic { width: 46px; height: 46px; font-size: 1.1rem; border-radius: 14px; }
+  .side-sticky { position: static; }
+  .areas-box { padding: 20px; }
+}
+@media (max-width: 600px) {
+  .cat-grid, .reach-grid { grid-template-columns: 1fr; }
+  .hero-typed { font-size: 1.1rem; }
+  .group-head { align-items: flex-start; }
+}
+
+/* long keyword H1s on treatment pages */
+.svc-hero h1 { font-size: clamp(2rem, 3.5vw, 3.2rem); }
+.pain-card { width: 280px; }
+.pain-row { grid-template-columns: 84px 1fr 58px; }
+.pain-row b { white-space: nowrap; }
