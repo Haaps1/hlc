@@ -19,7 +19,7 @@ document.currentScript.insertAdjacentHTML("beforebegin", `
     <div class="topbar-info">
       <a data-tel href="tel:+919876543210"><i class="fa-solid fa-phone"></i> +91 98765 43210</a>
       <a href="mailto:care@veinexhealth.in"><i class="fa-solid fa-envelope"></i> care@veinexhealth.in</a>
-      <span><i class="fa-solid fa-location-dot"></i> Indiranagar, Bangalore</span>
+      <span><i class="fa-solid fa-location-dot"></i> Bangalore</span>
     </div>
     <div class="topbar-social">
       <span><i class="fa-regular fa-clock"></i> Mon–Sat 9 AM – 9 PM</span>
