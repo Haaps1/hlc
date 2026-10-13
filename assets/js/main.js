@@ -484,9 +484,7 @@ document.addEventListener("pointerdown", e => {
   const span = document.createElement("span");
   span.className = "ripple";
   span.style.cssText = `width:${s}px;height:${s}px;left:${e.clientX - r.left - s / 2}px;top:${e.clientY - r.top - s / 2}px`;
-  if (getComputedStyle(b).position === "static") b.style.position = "relative";
-  b.style.overflow = "hidden";
-  b.appendChild(span);
+  b.appendChild(span); // .btn / .chip / .sc-chip already clip their ripple in CSS
   setTimeout(() => span.remove(), 700);
 });
 

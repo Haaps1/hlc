@@ -82,21 +82,16 @@ document.currentScript.insertAdjacentHTML("beforebegin", `
 <a class="fab-wa" data-wa href="#" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 <button class="to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
 
-<!-- Mobile app-style tab bar -->
-<nav class="tabbar" aria-label="App navigation">
-  <a href="index.html" data-nav="home"><i class="fa-solid fa-house-medical"></i>Home</a>
-  <a href="services.html" data-nav="services"><i class="fa-solid fa-stethoscope"></i>Treatments</a>
-  <button class="tab-book" data-book><span class="fab"><i class="fa-solid fa-calendar-plus"></i></span>Book</button>
-  <a href="about.html" data-nav="about"><i class="fa-solid fa-hospital"></i>About</a>
-  <a href="contact.html" data-nav="contact"><i class="fa-solid fa-headset"></i>Contact</a>
-</nav>
-
 <!-- Mobile menu (bottom sheet) -->
 <div class="sheet" id="menuSheet" role="dialog" aria-modal="true" aria-label="Menu">
   <div class="sheet-backdrop" data-close></div>
   <div class="sheet-panel">
     <div class="sheet-handle"></div>
     <button class="sheet-close" data-close aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <a class="ms-logo" href="index.html" aria-label="Veinex Health home">
+      <img src="assets/img/veinex-logo.png" alt="Veinex Health, Varicose Veins &amp; Proctology Clinic" width="190" height="64">
+      <span><i class="fa-solid fa-house"></i> Home</span>
+    </a>
     <div class="sheet-head"><span class="s-ic"><i class="fa-solid fa-stethoscope"></i></span><div><h3>Our Treatments</h3><p>Advanced care in Bangalore</p></div></div>
     <div class="ms-cat">
       <h4><i class="fa-solid fa-notes-medical"></i>Proctology</h4>
@@ -131,6 +126,7 @@ document.currentScript.insertAdjacentHTML("beforebegin", `
         <a href="circumcision-surgery-in-bangalore.html"><i class="fa-solid fa-user-doctor"></i>Circumcision</a>
       </div>
     </div>
+    <button class="btn btn-primary btn-block ms-book" data-book><i class="fa-regular fa-calendar-check"></i> Book Free Consultation</button>
     <div class="ms-links">
       <a href="about.html"><i class="fa-solid fa-hospital"></i>About Us</a>
       <a href="contact.html"><i class="fa-solid fa-headset"></i>Contact</a>
