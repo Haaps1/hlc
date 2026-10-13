@@ -11,7 +11,7 @@ document.currentScript.insertAdjacentHTML("beforebegin", `
         <a class="logo" href="index.html" aria-label="Veinex Health home">
         <img class="logo-img" src="assets/img/veinex-logo.png" alt="Veinex Health, Varicose Veins &amp; Proctology Clinic" width="190" height="64">
       </a>
-        <p>Veinex Health is a varicose veins &amp; proctology clinic in Indiranagar, Bangalore, offering advanced laser and laparoscopic surgery with same-day discharge and cashless insurance.</p>
+        <p>Veinex Health is a varicose veins &amp; proctology clinic in Bangalore, offering advanced laser and laparoscopic surgery with same-day discharge and cashless insurance.</p>
         <div class="f-social">
           <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
           <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
@@ -61,7 +61,7 @@ document.currentScript.insertAdjacentHTML("beforebegin", `
       <div>
         <h4>Visit Us</h4>
         <ul class="f-contact">
-          <li><i class="fa-solid fa-location-dot"></i><span>No. 24, 2nd Floor, 100 Feet Road, Indiranagar, Bangalore 560038</span></li>
+          <li><i class="fa-solid fa-location-dot"></i><span>No. 24, 2nd Floor, Main Road, Bangalore, Karnataka</span></li>
           <li><i class="fa-solid fa-phone"></i><a data-tel href="tel:+919876543210">+91 98765 43210</a></li>
           <li><i class="fa-solid fa-envelope"></i><a href="mailto:care@veinexhealth.in">care@veinexhealth.in</a></li>
           <li><i class="fa-regular fa-clock"></i><span>Mon–Sat: 9 AM – 9 PM<br>Sun: 10 AM – 2 PM<br>Emergency: 24×7</span></li>
