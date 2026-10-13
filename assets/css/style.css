@@ -1414,3 +1414,17 @@ h2[data-split] .split-line > span { transition-duration: .9s; }
 /* Chips in scrolling rows must never shrink (the tap ripple sets overflow:hidden,
    which lets flex items collapse and made the first tap miss). */
 .sc-chip, .chip { flex-shrink: 0; position: relative; overflow: hidden; }
+
+/* ---------- Treatment hero: clear photo (no floating badges, card below photo) ---------- */
+.ph-frame .pain-card {
+  position: relative; left: auto; bottom: auto; width: 100%; max-width: none;
+  margin: 18px 0 0; animation: none; z-index: 3;
+}
+.ph-frame .laser-scan { opacity: .55; }
+.ph-photo::after { background: linear-gradient(180deg, transparent 70%, rgba(6,26,61,.35)); }
+@media (min-width: 1101px) {
+  .svc-hero .ph-visual { min-height: 0; }
+  .ph-frame { width: min(440px, 100%); margin: 10px auto; }
+}
+.ph-frame .ph-back { inset: auto; top: 0; left: 0; width: 100%; aspect-ratio: 1; }
+.ph-frame .ph-outline { inset: auto; top: -20px; left: -20px; width: 100%; aspect-ratio: 1; }
